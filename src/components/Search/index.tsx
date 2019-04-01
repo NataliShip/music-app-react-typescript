@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Search.scss';
-import {ISearchProps} from "../../types/Search";
+import {ISearchProps} from "./types";
 
 class Search extends Component<ISearchProps> {
   render() {

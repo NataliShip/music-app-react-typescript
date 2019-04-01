@@ -2,7 +2,6 @@ import {FETCH_CHART, FETCH_CHART_FAILED, FETCH_CHART_SUCCEEDED} from "../constan
 import { put, takeEvery, call } from 'redux-saga/effects'
 
 function* chartSaga() {
-  yield put({type: FETCH_CHART})
   try {
     // this proxy used to fix errors with CORS policy
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
