@@ -14,4 +14,6 @@ interface IChart {
 interface ITrack {
     id: number;
     title: string;
+    album: { cover_small : string };
+    artist: { name: string }
 }

@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import { Dispatch, AnyAction } from 'redux';
 import React, { Component } from 'react';
 import _ from 'lodash'
-import {fetchChart} from '../../actions/fetchChart'
+import {index} from '../../actions/index'
 import {IAppProps, IAppState} from './types'
 import './App.scss';
 
@@ -24,8 +24,8 @@ class App extends Component<IAppProps, IAppState> {
               _.map(tracks, track => {
                 return (
                   <div key={track.id} className='list__track'>
-                    <img src={track.album.cover} alt=""/>
-                    <div>{track.title}</div>
+                    <img className='list__img' src={track.album.cover_small} alt='cover'/>
+                    <div><b>{track.artist.name}</b> {'-'} {track.title}</div>
                   </div>
                 )
               })
@@ -46,7 +46,7 @@ function mapStateToProps(state : IAppState) {
 
 function mapDispatchToProps(dispatch : Dispatch<AnyAction>) {
     return ({
-        fetchChart: () => {dispatch(fetchChart())},
+        fetchChart: () => {dispatch(index())},
     })
 }
 

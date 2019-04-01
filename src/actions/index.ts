@@ -1,6 +1,6 @@
 import {FETCH_CHART, FETCH_CHART_SUCCEEDED, FETCH_CHART_FAILED} from '../constants'
 
-export const fetchChart = () => {
+export const index = () => {
   return { type: FETCH_CHART }
 }
 
