@@ -8,12 +8,5 @@ export interface IAppState {
 }
 
 interface IChart {
-  tracks: { data: ITrack[] }
-}
-
-interface ITrack {
-    id: number;
-    title: string;
-    album: { cover_small : string };
-    artist: { name: string }
+  tracks: object
 }

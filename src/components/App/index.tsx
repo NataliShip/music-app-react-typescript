@@ -24,7 +24,7 @@ class App extends Component<IAppProps, IAppState> {
             {tracks ?
               _.map(tracks, track => {
                 return (
-                  <Track track={track}/>
+                  <Track key={track.id} track={track}/>
                 )
               })
               : <span>Идет загрузка...</span>
