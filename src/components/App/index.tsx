@@ -1,10 +1,11 @@
 import {connect} from "react-redux";
-import { Dispatch, AnyAction } from 'redux';
+import {Dispatch, AnyAction} from 'redux';
 import React, { Component } from 'react';
 import _ from 'lodash'
 import {index} from '../../actions/index'
 import {IAppProps, IAppState} from './types'
-import './App.scss';
+import './app.scss';
+import Track from '../Track'
 
 class App extends Component<IAppProps, IAppState> {
   componentWillMount() {
@@ -23,10 +24,7 @@ class App extends Component<IAppProps, IAppState> {
             {tracks ?
               _.map(tracks, track => {
                 return (
-                  <div key={track.id} className='list__track'>
-                    <img className='list__img' src={track.album.cover_small} alt='cover'/>
-                    <div><b>{track.artist.name}</b> {'-'} {track.title}</div>
-                  </div>
+                  <Track track={track}/>
                 )
               })
               : <span>Идет загрузка...</span>
