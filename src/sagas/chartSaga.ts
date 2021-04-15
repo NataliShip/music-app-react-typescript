@@ -1,23 +1,29 @@
-import {FETCH_CHART, FETCH_CHART_FAILED, FETCH_CHART_SUCCEEDED} from "../constants";
-import { put, takeEvery, call } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
+import * as actions from '../actions'
 
-function* chartSaga() {
-  try {
-    // this proxy used to fix errors with CORS policy
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const targetUrl = 'https://api.deezer.com/chart';
-    const data = yield call(() => fetch(proxyUrl + targetUrl)
-      .then(blob => blob.json())
-      .then(data => {
-        console.log(data);
-        return data;
-      }))
-    yield put({type: FETCH_CHART_SUCCEEDED, data})
-  } catch (error) {
-    yield put({type: FETCH_CHART_FAILED, error})
-  }
+const callApi = (url: string, params: object = {}) => {
+  return fetch(url, params)
+    .then(response => response.json())
 }
 
-export function* watchChartSaga() {
-  yield takeEvery('FETCH_CHART', chartSaga)
+export default function * Sagas () {
+  yield takeLatest(actions.fetchChart, fetchChart)
+}
+
+function * fetchChart () {
+  yield put(actions.fetchChartRequested())
+
+  try {
+    const apiUrl = 'https://api.deezer.com/chart'
+    // this proxy used to fix errors with CORS policy
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+    const url = proxyUrl + apiUrl
+
+    const response = yield call(callApi, url)
+
+    yield put(actions.fetchChartSuccess(response))
+  } catch (error) {
+
+    yield put(actions.fetchChartFailure(error))
+  }
 }

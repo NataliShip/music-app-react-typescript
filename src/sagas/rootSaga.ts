@@ -1,10 +1,8 @@
-import { all } from 'redux-saga/effects'
-import { watchChartSaga } from './chartSaga'
-
+import { all, fork } from 'redux-saga/effects'
+import testSaga from './chartSaga'
 
 export function* rootSaga() {
   yield all([
-    watchChartSaga(),
-
+    fork(testSaga),
   ])
 }

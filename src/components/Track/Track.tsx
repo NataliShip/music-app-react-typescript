@@ -1,5 +1,6 @@
 import React from 'react';
 import {ITrack} from './types'
+import css from './track.module.sass'
 
 const Track = ({track}: ITrack) => {
   const {
@@ -9,15 +10,15 @@ const Track = ({track}: ITrack) => {
     preview,
   } = track
   return (
-    <div className='list__track'>
-      <img className='list__img' src={album.cover_medium} alt='cover'/>
+    <div className={css.track}>
+      <img className={css.img} src={album.cover_medium} alt='cover'/>
       <div>
-        <div className='list__text'>
+        <div className={css.text}>
           <b>{artist.name}</b> {'-'}
-          <span className='list__title'>{title}</span>
+          <span className={css.title}>{title}</span>
         </div>
         <audio
-          className='list__audio'
+          className={css.audio}
           controls
           src={preview}>
           Ваш браузер не пожжерживает тег audio
@@ -27,4 +28,4 @@ const Track = ({track}: ITrack) => {
   )
 }
 
-export default Track;
+export default Track

@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import Root from './root';
-import { configStore } from './configStore';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { configStore } from './configStore'
+import App from './components/App/App'
+import './index.scss'
 
-const store = configStore();
+const store = configStore()
 
-ReactDOM.render(<Root store={store} />, document.getElementById('root'));
-
-// If you want your App to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <Route path='/' exact component={App} />
+        {/*<Route path='/track/:id' component={TrackPage} />*/}
+      </Router>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+)
