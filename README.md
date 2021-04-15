@@ -5,3 +5,5 @@
 Приложение для поиска и прослушивания музыки на основе API Deezer
 
 **Приложение находится на стадии разработки**
+
+![preview](https://raw.githubusercontent.com/NataliShip/music-app-react-typescript/master/public/preview.png)
