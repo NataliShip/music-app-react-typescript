@@ -2,13 +2,8 @@ import React from 'react';
 import {ITrack} from './types'
 import css from './track.module.sass'
 
-const Track = ({track}: ITrack) => {
-  const {
-    album,
-    artist,
-    title,
-    preview,
-  } = track
+const Track: React.FC<ITrack> = ({ track }) => {
+  const { album, artist, title, preview } = track
   return (
     <div className={css.track}>
       <img className={css.img} src={album.cover_medium} alt='cover'/>

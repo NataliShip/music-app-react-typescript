@@ -5,7 +5,7 @@ import { RootState } from '../../types'
 import Track from '../Track/Track'
 import css from './app.module.sass'
 
-const App = () => {
+const App: React.FC = () => {
   const dispatch = useDispatch()
   const data = useSelector((state: RootState) => state.chartReducer.data)
 
